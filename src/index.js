@@ -26,3 +26,26 @@ fetch(imgUrl)
     })
 
 // challenge 2 
+const breedUrl = 'https://dog.ceo/api/breeds/list/all' 
+let breedList = document.querySelector("ul#dog-breeds")
+
+fetch(breedUrl)
+    .then(res => res.json())
+    .then(function(breedResponse){
+        
+        let breedArray = []
+        let breedKey = []
+        
+console.log(breedResponse)
+    breedResponse.message.forEach(function(breed){
+    breedArray.push(breed)
+    breedKey = Object.keys(breedArray)
+    })
+    breedKey.forEach(function(e, i){
+        let blankLi = document.createElement("li")
+        
+        blankLi.append(breedKey[i])
+        breedList.append(blankLi)
+    })
+})
+
